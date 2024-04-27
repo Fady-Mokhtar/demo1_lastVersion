@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "demo1_lastVersion",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"lcd.h": "c",
+			"gpio.h": "c",
+			"keypad.h": "c",
+			"nvic.h": "c",
+			"stm32f401cc.h": "c",
+			"keypad_cfg.h": "c",
+			"sched.h": "c",
+			"runnables_cfg.h": "c",
+			"dma.h": "c",
+			"rcc.h": "c",
+			"gpio_cfg.h": "c"
+		}
+	}
+}
