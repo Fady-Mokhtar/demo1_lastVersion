@@ -196,9 +196,22 @@ MCALStatus_t USART_startReceive_IT(USART_ManagerStruct *usartxManger, uint8_t *p
 	/* Enable the UART Data Register not empty Interrupt */
 	usartxManger->Instance->CR1 |= (USART_CR1_RXNEIE_Msk);
 
-	/* enable usart global interrupt*/
-	NVIC_EnableIRQ(USART1_IRQn); // usart1 you need to be be hadle with all usarts
-
+	/* enable USART module global interrupt */
+	switch ((uint32_t) usartxManger->Instance)
+	{
+	case USART1_BASE:
+		NVIC_EnableIRQ(USART1_IRQn);
+		break;
+	case USART2_BASE:
+		NVIC_EnableIRQ(USART2_IRQn);
+		break;
+	case USART6_BASE:
+		NVIC_EnableIRQ(USART6_IRQn);
+		break;
+	default:
+		return MCAL_ERROR;
+		break;
+	}
 	return MCAL_OK;
 }
 static MCALStatus_t USART_dataReceive_IT(USART_ManagerStruct *usartxManger)

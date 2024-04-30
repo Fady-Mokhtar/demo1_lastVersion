@@ -36,7 +36,7 @@ const uint8_t ledon[8] = {'L', 'e', 'd', 'i', 's', '_', 'O', 'n'};
 const uint8_t ledoff[8] = {'L', 'e', 'd', 'i', 's', 'O', 'f', 'f'};
 const uint8_t error[8] = {'E', 'r', 'r', 'o', 'r', '!', '!', '!'};
 
-char rx_data[8] = {0};
+uint8_t rx_data[8] = {0};
 
 void HAL_UART_RxCpltCallback(USART_ManagerStruct *usart1Manager)
 {
@@ -62,7 +62,6 @@ void HAL_UART_RxCpltCallback(USART_ManagerStruct *usart1Manager)
 
 int main(void)
 {
-
     Enable_Interrupts();
 
     /* Initialize all configured peripherals */
@@ -73,11 +72,9 @@ int main(void)
     LED_Init();
     USART_Init(&usart1Manager);
     
-    
     while (1)
     {
         USART_startReceive_IT(&usart1Manager, rx_data, 8); // Start UART receive in interrupt mode
-
     }
 
     return 0;
