@@ -3,7 +3,6 @@
  ******************************************************************************/
 #include "usart.h"
 #include "usart_regs.h"//for dev phase only
-// #include "usart_cfg.h"
 #include "STD_TYPES.h"
 #include "dma.h"
 

@@ -35,6 +35,18 @@ enum
 #define USART_ERROR_ORE USART_SR_ORE_Msk /*0x00000008U*/ /*!< Overrun error       */
 #define USART_ERROR_DMA 0x00000010U                      /*!< DMA transfer error  */
 
+typedef uint32_t HAL_UART_RxTypeTypeDef;
+typedef uint32_t HAL_UART_RxEventTypeTypeDef;
+
+#define HAL_UART_RECEPTION_STANDARD          (0x00000000U)             /*!< Standard reception                       */
+#define HAL_UART_RECEPTION_TOIDLE            (0x00000001U)             /*!< Reception till completion or IDLE event  */
+
+#define HAL_UART_RXEVENT_TC                  (0x00000000U)             /*!< RxEvent linked to Transfer Complete event */
+#define HAL_UART_RXEVENT_HT                  (0x00000001U)             /*!< RxEvent linked to Half Transfer event     */
+#define HAL_UART_RXEVENT_IDLE                (0x00000002U)
+
+
+
 typedef struct
 {
   uint32_t BaudRate; /*!< This member configures the UART communication baud rate.
@@ -99,6 +111,10 @@ typedef struct
   uint16_t RxXferSize; /*!< UART Rx Transfer size              */
 
   __IO uint16_t RxXferCount; /*!< UART Rx Transfer Counter           */
+
+  __IO HAL_UART_RxTypeTypeDef ReceptionType;      /*!< Type of ongoing reception          */
+
+  __IO HAL_UART_RxEventTypeTypeDef RxEventType;   /*!< Type of Rx Event                   */
 
   DMA_HandleTypeDef *hdmatx; /*!< UART Tx DMA Handle parameters      */
 

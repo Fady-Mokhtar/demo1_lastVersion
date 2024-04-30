@@ -355,6 +355,8 @@ enum FlagStatus
 	SET = !RESET
 };
 
+extern void HAL_UART_RxCpltCallback(USART_ManagerStruct *usart1Manager);
+
 void MCAL_USART_IRQHandler(USART_ManagerStruct *usartxManger)
 {
 	uint32_t isrflags = (usartxManger->Instance->SR);
@@ -372,6 +374,12 @@ void MCAL_USART_IRQHandler(USART_ManagerStruct *usartxManger)
 		if (((isrflags & USART_SR_RXNE) != RESET) && ((cr1its & USART_CR1_RXNEIE) != RESET))
 		{
 			USART_dataReceive_IT(usartxManger);
+
+			if(usartxManger->RxXferCount == 0)
+			{
+				HAL_UART_RxCpltCallback(usartxManger);
+			}
+
 			return; // no error and recieve mode receives
 		}
 	}

@@ -17,7 +17,9 @@
 			"runnables_cfg.h": "c",
 			"dma.h": "c",
 			"rcc.h": "c",
-			"gpio_cfg.h": "c"
+			"gpio_cfg.h": "c",
+			"usart_regs.h": "c",
+			"std_types.h": "c"
 		}
 	}
 }

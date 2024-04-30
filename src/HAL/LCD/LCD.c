@@ -490,6 +490,7 @@ uint8_t Begin=0;
 
 /// task every 120 m
 void Switches_Of_Keypad(void){
+	//USART_Receive_DMA(&usart1Manager, &UART_Buffer, (uint16_t)0x02);
 	if(Current_Display_Mode== DATE_TIME_MODE){
 		//// UARTFARME[1] is the recievied command from the uart
 		 if (UART_Buffer[1] == CHANGE_MODE)//Mode Button
